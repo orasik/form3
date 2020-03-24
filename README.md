@@ -3,7 +3,7 @@ Form3 Interview Test - Module Repository
 
 ## Developer
 
-Oras Al-Kubaisi <hi@oras.me>
+Oras Al-Kubaisi
 
 ## Objectives
 To write a HTTP client for accounts API using Go lang.
@@ -18,7 +18,6 @@ Reasons:
 - Code re-usability. For example if we decided in the future to use one of the endpoints in another application, rather
 than re-writing that part, we could just use the module again.
 - Separate unit-test from integration test.
-- 
 
 ***2. Error messages as variables***
 Reasons:
@@ -30,12 +29,17 @@ Reasons:
 Reason:
 - Personal preference as I find them easier to read and maintain instead of chained `+` signs between strings. 
 
+***4. I haven't implemented all business logic to validate `Create` account for all countries***
+Reasons:
+- Time consuming.
+- It will follow the same pattern I have implemented. A new country means a new file inside `accounts` folder and unit test it. Also adding the country code to `switch` statement in `Validate` method.
+
 ## Test
 
 ```bash
 go test -v ./...
 ```
 
-## Integration Test and docker-compose
+## Integration test and docker-compose
 
-This will be in the other repository `https://github.com/orasik/form3-integration`
+This will be in the other repository `https://github.com/orasik/form3integration`
