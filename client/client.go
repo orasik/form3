@@ -180,7 +180,7 @@ func (c *AccountHttpClient) Delete(accountID string, version int8) (bool, error)
 
 	switch res.StatusCode {
 	case 204:
-		log.Infof("account %s has been deleted successfully", accountID)
+		log.Debugf("account %s has been deleted successfully", accountID)
 
 		return true, nil
 	case 404:
