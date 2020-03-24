@@ -24,7 +24,7 @@ type AccountHttpClient struct {
 
 var (
 	// Create endpoint error messages
-	ErrorAcountIsInvalid                            = errors.New("account data is invalid")
+	ErrorAccountIsInvalid                           = errors.New("account data is invalid")
 	ErrorCanNotMarshalJsonForCreateRequest          = errors.New("can not marshal JSON for Create request")
 	ErrorUnmarshallingCreateResponseToAccountStruct = errors.New("Error unmarshalling Create response to Account Struct")
 	ErrorReadingCreateResponseBosy                  = errors.New("error reading Create response body")
@@ -45,7 +45,7 @@ func (c *AccountHttpClient) Create(acc *form3.Account) (*form3.Account, error) {
 
 	if err != nil {
 		log.Errorf("can not create a new account %s", err.Error())
-		return nil, ErrorAcountIsInvalid
+		return nil, ErrorAccountIsInvalid
 	}
 
 	request := &form3.ClientBody{Account: acc}
@@ -97,7 +97,6 @@ func (c *AccountHttpClient) Create(acc *form3.Account) (*form3.Account, error) {
 }
 
 // List will return all accounts in an organisation
-// TODO: pagination
 func (c *AccountHttpClient) List(pageNumber uint8, pageSize uint8) ([]*form3.Account, error) {
 	var errorMessage string
 	if pageSize == 0 {
@@ -122,7 +121,7 @@ func (c *AccountHttpClient) List(pageNumber uint8, pageSize uint8) ([]*form3.Acc
 		}
 		obj := &form3.ListResponse{}
 		err = json.Unmarshal(body, obj)
-		if err != nil || obj.Arr == nil {
+		if err != nil {
 			errorMessage = "error in unmarshalling List json response"
 			log.Error(errorMessage)
 
