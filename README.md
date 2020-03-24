@@ -46,4 +46,4 @@ go test -v ./...
 
 ## Integration test and docker-compose
 
-This will be in the other repository `https://github.com/orasik/form3integration`
+This will be in the other repository [Integration Test](https://github.com/orasik/form3integration)
